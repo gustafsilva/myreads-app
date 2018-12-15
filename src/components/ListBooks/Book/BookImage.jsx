@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const BookImage = (props) => {
-  const { imageLinks } = props;
-  const { smallThumbnail } = imageLinks;
+const BookImage = ({ imageLinks }) => {
+  const { smallThumbnail, thumbnail } = imageLinks;
+
+  let image = '';
+  if (smallThumbnail !== '') {
+    image = smallThumbnail;
+  } else if (thumbnail !== '') {
+    image = thumbnail;
+  }
 
   const style = {
     width: 128,
     height: 193,
-    backgroundImage: `url("${smallThumbnail}")`,
+    backgroundImage: `url("${image}")`,
   };
 
   return (
@@ -16,8 +22,17 @@ const BookImage = (props) => {
   );
 };
 
+const IMAGE_LINK_SHAPE = {
+  smallThumbnail: PropTypes.string,
+  thumbnail: PropTypes.string,
+};
+
 BookImage.propTypes = {
-  imageLinks: PropTypes.shape({ smallThumbnail: PropTypes.string }).isRequired,
+  imageLinks: PropTypes.shape(IMAGE_LINK_SHAPE),
+};
+
+BookImage.defaultProps = {
+  imageLinks: { smallThumbnail: '', thumbnail: '' },
 };
 
 export default BookImage;

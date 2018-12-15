@@ -32,8 +32,8 @@ class Book extends Component {
 }
 
 const DATA_SHAPE = {
-  title: PropTypes.string,
-  imageLinks: PropTypes.shape({ smallThumbnail: PropTypes.string }).isRequired,
+  title: PropTypes.string.isRequired,
+  imageLinks: PropTypes.shape({ smallThumbnail: PropTypes.string }),
   authors: PropTypes.arrayOf(PropTypes.string),
 };
 

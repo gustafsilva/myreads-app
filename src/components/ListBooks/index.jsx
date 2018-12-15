@@ -3,19 +3,15 @@ import PropTypes from 'prop-types';
 
 import Book from './Book';
 
-const ListBooks = (props) => {
-  const { books, updateBook } = props;
-
+const ListBooks = ({ books, updateBook }) => {
   const listBook = books.map(book => (
     <Book key={book.id} data={book} updateBook={updateBook} />
   ));
 
   return (
-    <div className="bookshelf-books">
-      <ol className="books-grid">
-        {listBook}
-      </ol>
-    </div>
+    <ol className="books-grid">
+      {listBook}
+    </ol>
   );
 };
 

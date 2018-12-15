@@ -12,6 +12,8 @@ class BooksApp extends Component {
 
     this.state = {
       myBooks: [],
+      booksSearch: [],
+      query: '',
     };
   }
 
@@ -24,16 +26,17 @@ class BooksApp extends Component {
     ));
   }
 
-  addBook = (book) => {
+  addBook = (book, newShelf) => {
+    const newBook = book;
+    newBook.shelf = newShelf;
+
     this.setState(currentState => ({
-      myBooks: currentState.myBooks.concat([book]),
+      myBooks: currentState.myBooks.concat([newBook]),
     }));
   }
 
-  movBookShelf = (book, newShelf) => {
-    const { myBooks } = this.state;
-
-    const newMyBooks = myBooks.map((myBook) => {
+  setShelfBook = (book, books, newShelf) => {
+    const newBooks = books.map((myBook) => {
       // Percorre por toda lista dos MyBooks já cadastrados para mudar shelf do livro atualizado
       if (myBook.id === book.id) {
         const newMyBook = myBook;
@@ -41,18 +44,31 @@ class BooksApp extends Component {
 
         return newMyBook;
       }
-
       return myBook;
     });
 
+    return newBooks;
+  }
+
+  movBookShelf = (book, newShelf) => {
+    const { myBooks, booksSearch } = this.state;
+
+    const newMyBooks = this.setShelfBook(book, myBooks, newShelf);
+    const newBooksSearch = this.setShelfBook(book, booksSearch, newShelf);
+
     this.setState({
       myBooks: newMyBooks,
+      booksSearch: newBooksSearch,
     });
   }
 
   delBook = (book) => {
+    const { booksSearch } = this.state;
+    const newBooksSearch = this.setShelfBook(book, booksSearch, 'none');
+
     this.setState(currentState => ({
       myBooks: currentState.myBooks.filter(myBook => myBook.id !== book.id),
+      booksSearch: newBooksSearch,
     }));
   }
 
@@ -66,6 +82,28 @@ class BooksApp extends Component {
     return currentLengthMyBooks !== newLengthMyBooks;
   }
 
+  getShelfBook = (book) => {
+    const { myBooks } = this.state;
+
+    const filterBook = myBooks.filter(myBook => myBook.id === book.id);
+
+    if (filterBook.length > 0) {
+      return filterBook[0].shelf;
+    }
+    return 'none';
+  }
+
+  addShelfBooksSearch = (booksSearch) => {
+    const books = booksSearch.map((bookSearch) => {
+      const book = bookSearch;
+      book.shelf = this.getShelfBook(book);
+
+      return book;
+    });
+
+    return books;
+  }
+
   updateBook = (book, newShelf) => {
     // Atualizando shelf de um livro
     BooksAPI.update(book, newShelf).then((result) => {
@@ -73,15 +111,32 @@ class BooksApp extends Component {
       if (newShelf === 'none') {
         this.delBook(book);
       } else if (this.checkMyBooksHaveChanged(result) === true) {
-        this.addBook(book);
+        this.addBook(book, newShelf);
       } else {
         this.movBookShelf(book, newShelf);
       }
     });
   }
 
+  updateQuery = (newQuery) => {
+    this.setState({
+      query: newQuery,
+    });
+
+    if (newQuery !== '') {
+      BooksAPI.search(newQuery).then((response) => {
+        const { error } = response;
+        const booksSearch = error ? [] : this.addShelfBooksSearch(response);
+
+        this.setState({
+          booksSearch,
+        });
+      }).catch(err => console.error('deu ruim', err));
+    }
+  }
+
   render() {
-    const { myBooks } = this.state;
+    const { myBooks, booksSearch, query } = this.state;
 
     return (
       <div className="app">
@@ -94,7 +149,14 @@ class BooksApp extends Component {
         />
         <Route
           path="/search"
-          component={SearchPage}
+          render={() => (
+            <SearchPage
+              books={booksSearch}
+              query={query}
+              updateQuery={this.updateQuery}
+              updateBook={this.updateBook}
+            />
+          )}
         />
       </div>
     );

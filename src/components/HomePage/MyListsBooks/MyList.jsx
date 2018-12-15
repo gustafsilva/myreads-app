@@ -7,9 +7,11 @@ const MyList = (props) => {
   const { name, books, updateBook } = props;
 
   return (
-    <div className="bookshelf">
-      <h2 className="bookshelf-title">{name}</h2>
-      <ListBooks books={books} updateBook={updateBook} />
+    <div className="bookshelf-books">
+      <div className="bookshelf">
+        <h2 className="bookshelf-title">{name}</h2>
+        <ListBooks books={books} updateBook={updateBook} />
+      </div>
     </div>
   );
 };

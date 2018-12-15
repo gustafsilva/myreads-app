@@ -1,18 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { toProperList } from '@cahil/utils';
 
-const BookAuthors = (props) => {
-  const { authors } = props;
+const BookAuthors = ({ authors }) => {
   const authorsProperList = toProperList(authors);
 
-  return (
+  return authors.length > 0 && (
     <div className="book-authors">{authorsProperList}</div>
   );
 };
 
-BookAuthors.propTypes = {
-  authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+BookAuthors.defaultProps = {
+  authors: [],
 };
 
 export default BookAuthors;
