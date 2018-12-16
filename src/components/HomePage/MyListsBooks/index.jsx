@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 import MyList from './MyList';
 
-const MyListsBooks = (props) => {
-  const { myBooks, updateBook } = props;
-
+const MyListsBooks = ({ myBooks, updateBook }) => {
   const currentlyReadingBooks = myBooks.filter(book => book.shelf === 'currentlyReading');
   const wantToReadBooks = myBooks.filter(book => book.shelf === 'wantToRead');
   const readBooks = myBooks.filter(book => book.shelf === 'read');
