@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import ListBooks from '../../ListBooks';
 
 const MyList = ({ name, books, updateBook }) => (
-  <div className="bookshelf-books">
-    <div className="bookshelf">
-      <h2 className="bookshelf-title">{name}</h2>
-      <ListBooks books={books} updateBook={updateBook} />
+  name.length > 0 && (
+    <div className="bookshelf-books">
+      <div className="bookshelf">
+        <h2 className="bookshelf-title">{name}</h2>
+        <ListBooks books={books} updateBook={updateBook} />
+      </div>
     </div>
-  </div>
+  )
 );
 
 MyList.propTypes = {

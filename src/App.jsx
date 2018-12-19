@@ -137,7 +137,6 @@ class BooksApp extends Component {
 
   render() {
     const { myBooks, booksSearch, query } = this.state;
-
     return (
       <div className="app">
         <Route

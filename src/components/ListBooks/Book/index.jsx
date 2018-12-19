@@ -16,7 +16,7 @@ class Book extends Component {
     const { data } = this.props;
     const { title } = data;
 
-    return (
+    return (title.length > 0 && (
       <li>
         <div className="book">
           <div className="book-top">
@@ -27,7 +27,7 @@ class Book extends Component {
           <BookAuthors authors={data.authors} />
         </div>
       </li>
-    );
+    ));
   }
 }
 

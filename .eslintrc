@@ -4,5 +4,8 @@
   "globals": {
     "localStorage": true,
     "fetch": true
+  },
+  "env": {
+    "jest": true
   }
 }

@@ -8,11 +8,11 @@ const ListBooks = ({ books, updateBook }) => {
     <Book key={book.id} data={book} updateBook={updateBook} />
   ));
 
-  return (
+  return (listBook.length > 0 && (
     <ol className="books-grid">
       {listBook}
     </ol>
-  );
+  ));
 };
 
 ListBooks.propTypes = {

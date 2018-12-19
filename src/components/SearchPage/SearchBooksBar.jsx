@@ -7,6 +7,7 @@ const SearchBooksBar = ({ query, updateQuery }) => (
     <Link to="/" className="close-search">Close</Link>
     <div className="search-books-input-wrapper">
       <input
+        id="searchBooksBar"
         type="text"
         placeholder="Search by title or author"
         value={query}
