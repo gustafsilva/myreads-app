@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import * as BooksAPI from '../../BooksAPI';
+import * as BooksAPI from '../../api/BooksAPI';
 import * as BooksAPIUtils from '../../utils/BooksAPIUtils';
 import SearchBooksBar from './SearchBooksBar';
-import ListBooks from '../ListBooks';
-import Loading from '../Loading';
+import ListBooks from '../../components/ListBooks';
+import Loading from '../../components/Loading';
 
 class SearchPage extends Component {
   state = {

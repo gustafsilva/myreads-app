@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router';
 import { waitForState } from 'enzyme-async-helpers';
 
 import App from './App';
-import MyList from './components/HomePage/MyListsBooks/MyList';
+import MyList from './pages/HomePage/MyListsBooks/MyList';
 import ListBooks from './components/ListBooks';
 import Book from './components/ListBooks/Book';
 
