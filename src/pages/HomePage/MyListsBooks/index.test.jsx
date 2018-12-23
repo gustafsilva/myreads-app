@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
+import Book from 'components/ListBooks/Book';
 import MyListsBooks from './index';
-import Book from '../../ListBooks/Book';
 
 describe('[component] MyListsBooks', () => {
   const setup = { updateBook: jest.fn() };

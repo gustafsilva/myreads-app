@@ -3,8 +3,8 @@ import { shallow, mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import { waitForState } from 'enzyme-async-helpers';
 
+import Book from 'components/ListBooks/Book';
 import SearchPage from './index';
-import Book from '../ListBooks/Book';
 
 describe('[component] SearchPage', () => {
   const setup = {
@@ -52,47 +52,47 @@ describe('[component] SearchPage', () => {
 
   const BOOKS = [
     {
-      'title': 'Astronomy',
-      'authors': [
-        'Clay Farris Naff'
+      title: 'Astronomy',
+      authors: [
+        'Clay Farris Naff',
       ],
-      'publisher': 'Greenhaven Press, Incorporated',
-      'publishedDate': '2006-01',
-      'description': 'A collection of essays which present the history of astronomy, current theories about the origin of the universe, and controversies surrounding the Hubble telescope, a mission to Mars, and the existence of extraterrestrial life.',
-      'industryIdentifiers': [
+      publisher: 'Greenhaven Press, Incorporated',
+      publishedDate: '2006-01',
+      description: 'A collection of essays which present the history of astronomy, current theories about the origin of the universe, and controversies surrounding the Hubble telescope, a mission to Mars, and the existence of extraterrestrial life.',
+      industryIdentifiers: [
         {
-          'type': 'ISBN_10',
-          'identifier': '0737728159'
+          type: 'ISBN_10',
+          identifier: '0737728159',
         },
         {
-          'type': 'ISBN_13',
-          'identifier': '9780737728156'
-        }
+          type: 'ISBN_13',
+          identifier: '9780737728156',
+        },
       ],
-      'readingModes': {
-        'text': false,
-        'image': false
+      readingModes: {
+        text: false,
+        image: false,
       },
-      'pageCount': 224,
-      'printType': 'BOOK',
-      'categories': [
-        'Juvenile Nonfiction'
+      pageCount: 224,
+      printType: 'BOOK',
+      categories: [
+        'Juvenile Nonfiction',
       ],
-      'averageRating': 2,
-      'ratingsCount': 1,
-      'maturityRating': 'NOT_MATURE',
-      'allowAnonLogging': false,
-      'contentVersion': 'preview-1.0.0',
-      'imageLinks': {
-        'smallThumbnail': 'http://books.google.com/books/content?id=0gNAAQAAIAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
-        'thumbnail': 'http://books.google.com/books/content?id=0gNAAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
+      averageRating: 2,
+      ratingsCount: 1,
+      maturityRating: 'NOT_MATURE',
+      allowAnonLogging: false,
+      contentVersion: 'preview-1.0.0',
+      imageLinks: {
+        smallThumbnail: 'http://books.google.com/books/content?id=0gNAAQAAIAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
+        thumbnail: 'http://books.google.com/books/content?id=0gNAAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
       },
-      'language': 'en',
-      'previewLink': 'http://books.google.com/books?id=0gNAAQAAIAAJ&q=astronomy&dq=astronomy&hl=&cd=1&source=gbs_api',
-      'infoLink': 'http://books.google.com/books?id=0gNAAQAAIAAJ&dq=astronomy&hl=&source=gbs_api',
-      'canonicalVolumeLink': 'https://books.google.com/books/about/Astronomy.html?hl=&id=0gNAAQAAIAAJ',
-      'id': '0gNAAQAAIAAJ',
-      'shelf': 'none'
+      language: 'en',
+      previewLink: 'http://books.google.com/books?id=0gNAAQAAIAAJ&q=astronomy&dq=astronomy&hl=&cd=1&source=gbs_api',
+      infoLink: 'http://books.google.com/books?id=0gNAAQAAIAAJ&dq=astronomy&hl=&source=gbs_api',
+      canonicalVolumeLink: 'https://books.google.com/books/about/Astronomy.html?hl=&id=0gNAAQAAIAAJ',
+      id: '0gNAAQAAIAAJ',
+      shelf: 'none',
     },
   ];
 

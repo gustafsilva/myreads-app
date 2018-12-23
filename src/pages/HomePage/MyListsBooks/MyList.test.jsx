@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
+import Book from 'components/ListBooks/Book';
 import MyList from './MyList';
-import Book from '../../ListBooks/Book';
 
 describe('[component] MyList', () => {
   const setup = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ListBooks from '../../../components/ListBooks';
+import ListBooks from 'components/ListBooks';
 
 const MyList = ({ name, books, updateBook }) => (
   name.length > 0 && (
