@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
+import { waitForState } from 'enzyme-async-helpers';
 
 import App from './App';
-import MyListsBooks from './components/HomePage/MyListsBooks';
 import MyList from './components/HomePage/MyListsBooks/MyList';
 import ListBooks from './components/ListBooks';
 import Book from './components/ListBooks/Book';
@@ -13,6 +13,7 @@ describe('[component] App', () => {
     homePage: '/',
     searchPage: '/search',
   };
+  const CONFIG_API_REQUEST = { timeout: 5000 };
   const LIST_BOOKS = [
     {
       title: 'The Linux Command Line',
@@ -56,8 +57,7 @@ describe('[component] App', () => {
   it('check init state', () => {
     const initStateExptected = {
       myBooks: [],
-      booksSearch: [],
-      query: '',
+      loading: true,
     };
 
     const wrapper = shallow(<App />);
@@ -65,117 +65,11 @@ describe('[component] App', () => {
     expect(wrapper.state()).toEqual(initStateExptected);
   });
 
-  describe('HomePage', () => {
-    it('check my lists books', () => {
-      const lengthMyListsBooksExpected = 1;
+  it('check loading state', async () => {
+    const wrapper = shallow(<App />);
+    await waitForState(wrapper, state => state.loading === false, CONFIG_API_REQUEST);
 
-      const wrapper = mount((
-        <MemoryRouter initialEntries={[PATHS.homePage]}>
-          <App />
-        </MemoryRouter>
-      ));
-      const myListsBooks = wrapper.find(MyListsBooks);
-
-      expect(myListsBooks).toHaveLength(lengthMyListsBooksExpected);
-    });
-
-    it('check three my list', () => {
-      const lengthMyListExpected = 3;
-
-      const wrapper = mount((
-        <MemoryRouter initialEntries={[PATHS.homePage]}>
-          <App />
-        </MemoryRouter>
-      ));
-      const myListsBooks = wrapper.find(MyList);
-
-      expect(myListsBooks).toHaveLength(lengthMyListExpected);
-    });
-
-    it('check three lists books', () => {
-      const lengthListsBooksExpected = 3;
-
-      const wrapper = mount((
-        <MemoryRouter initialEntries={[PATHS.homePage]}>
-          <App />
-        </MemoryRouter>
-      ));
-      const myListsBooks = wrapper.find(ListBooks);
-
-      expect(myListsBooks).toHaveLength(lengthListsBooksExpected);
-    });
-
-    it('check empty books rendering init state', () => {
-      const lengthBooksExpected = 0;
-
-      const wrapper = mount((
-        <MemoryRouter initialEntries={[PATHS.homePage]}>
-          <App />
-        </MemoryRouter>
-      ));
-      const myListsBooks = wrapper.find(Book);
-
-      expect(myListsBooks).toHaveLength(lengthBooksExpected);
-    });
-
-    it('check books rendering', () => {
-      const lengthBooksExpected = 3;
-
-      const wrapper = mount((
-        <MemoryRouter initialEntries={[PATHS.homePage]}>
-          <App />
-        </MemoryRouter>
-      ));
-      const appComponent = wrapper.find(App).instance();
-      appComponent.setState({ myBooks: LIST_BOOKS });
-      wrapper.update();
-      const booksSearch = wrapper.find(Book);
-
-      expect(booksSearch).toHaveLength(lengthBooksExpected);
-    });
-  });
-
-  describe('SearchPage', () => {
-    it('check lists books', () => {
-      const lengthListsBooksExpected = 1;
-
-      const wrapper = mount((
-        <MemoryRouter initialEntries={[PATHS.searchPage]}>
-          <App />
-        </MemoryRouter>
-      ));
-      const myListsBooks = wrapper.find(ListBooks);
-
-      expect(myListsBooks).toHaveLength(lengthListsBooksExpected);
-    });
-
-    it('check empty books rendering init state', () => {
-      const lengthBooksExpected = 0;
-
-      const wrapper = mount((
-        <MemoryRouter initialEntries={[PATHS.searchPage]}>
-          <App />
-        </MemoryRouter>
-      ));
-      const myListsBooks = wrapper.find(Book);
-
-      expect(myListsBooks).toHaveLength(lengthBooksExpected);
-    });
-
-    it('check books rendering', () => {
-      const lengthBooksExpected = 3;
-
-      const wrapper = mount((
-        <MemoryRouter initialEntries={[PATHS.searchPage]}>
-          <App />
-        </MemoryRouter>
-      ));
-      const appComponent = wrapper.find(App).instance();
-      appComponent.setState({ booksSearch: LIST_BOOKS });
-      wrapper.update();
-      const booksSearch = wrapper.find(Book);
-
-      expect(booksSearch).toHaveLength(lengthBooksExpected);
-    });
+    const { loading } = wrapper.state();
+    expect(loading).toBeFalsy();
   });
 });

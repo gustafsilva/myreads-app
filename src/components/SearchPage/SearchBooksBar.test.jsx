@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { MemoryRouter } from 'react-router';
 
 import SearchBooksBar from './SearchBooksBar';
 
@@ -32,6 +33,18 @@ describe('[component] SearchBooksBar', () => {
     const wrapper = shallow(<SearchBooksBar {...setup} query={query} />);
     const target = { value: 'reac' };
     wrapper.find('input').simulate('change', { target });
+
+    expect(setup.updateQuery).toHaveBeenCalled();
+  });
+
+  it('check click clear query', () => {
+    const wrapper = mount((
+      <MemoryRouter>
+        <SearchBooksBar {...setup} query="react" />
+      </MemoryRouter>
+    ));
+    const clearButton = wrapper.find('button');
+    clearButton.simulate('click');
 
     expect(setup.updateQuery).toHaveBeenCalled();
   });
