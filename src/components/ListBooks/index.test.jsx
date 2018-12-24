@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import ListBooks from './index';
 import Book from './Book';
@@ -14,7 +14,7 @@ describe('[component] ListBooks', () => {
 
     const wrapper = shallow(<ListBooks books={books} {...setup} />);
 
-    expect(wrapper.isEmptyRender()).toBeTruthy();
+    expect(wrapper.exists('Book')).toBeFalsy();
   });
 
   it('rendering with books list not empty', () => {
@@ -59,7 +59,7 @@ describe('[component] ListBooks', () => {
     ];
     const lengthExpected = books.length;
 
-    const wrapper = mount(<ListBooks books={books} {...setup} />);
+    const wrapper = shallow(<ListBooks books={books} {...setup} />);
     const listBooks = wrapper.find(Book);
 
     expect(listBooks).toHaveLength(lengthExpected);

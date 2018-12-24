@@ -7,7 +7,7 @@ const getShelfBook = (book, myBooks) => {
   return 'none';
 };
 
-const setShelfBook = (book, books, newShelf) => {
+export const setShelfBook = (book, books, newShelf) => {
   const newBooks = books.map((myBook) => {
     // Percorre por toda lista dos MyBooks já cadastrados para mudar shelf do livro atualizado
     if (myBook.id === book.id) {

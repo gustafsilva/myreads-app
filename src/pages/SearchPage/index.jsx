@@ -37,7 +37,7 @@ class SearchPage extends Component {
             loading: false,
           });
         }
-      }).catch(err => console.error('deu ruim', err));
+      }).catch((err => console.error('deu ruim', err)));
     } else {
       this.setState({
         books: [],
@@ -46,11 +46,21 @@ class SearchPage extends Component {
     }
   }
 
-  render() {
+  updateBookSearch = (book, newShelf) => {
     const { updateBook } = this.props;
+    const { books } = this.state;
+    updateBook(book, newShelf);
+
+    const newBooks = BooksAPIUtils.setShelfBook(book, books, newShelf);
+    this.setState({
+      books: newBooks,
+    });
+  }
+
+  render() {
     const { query, books, loading } = this.state;
 
-    let listBooks = <ListBooks books={books} updateBook={updateBook} />;
+    let listBooks = <ListBooks books={books} updateBook={this.updateBookSearch} />;
     if (books.length === 0 && query !== '') {
       listBooks = <p>Nenhum livro encontrado.</p>;
     }

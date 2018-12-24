@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import ItemAnimated from 'components/animations/ItemAnimated';
 import BookImage from './BookImage';
 import BookShelfChanger from './BookShelfChanger';
 import BookAuthors from './BookAuthors';
+
 
 class Book extends Component {
   update = (newShelf) => {
@@ -17,7 +19,7 @@ class Book extends Component {
     const { title } = data;
 
     return (title.length > 0 && (
-      <li>
+      <ItemAnimated>
         <div className="book">
           <div className="book-top">
             <BookImage imageLinks={data.imageLinks} />
@@ -26,7 +28,7 @@ class Book extends Component {
           <div className="book-title">{title}</div>
           <BookAuthors authors={data.authors} />
         </div>
-      </li>
+      </ItemAnimated>
     ));
   }
 }

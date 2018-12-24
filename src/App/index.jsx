@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-
-import HomePage from 'pages/HomePage';
-import SearchPage from 'pages/SearchPage';
-import Loading from 'components/Loading';
+import React, { Component, createRef } from 'react';
+import ReactNotification from 'react-notifications-component';
 
 import * as BooksAPI from 'api/BooksAPI';
 import * as BooksAPIUtils from 'utils/BooksAPIUtils';
+
+import Loading from 'components/Loading';
+import Routes from './Routes';
 import './App.css';
+import 'react-notifications-component/dist/theme.css';
 
 
 class BooksApp extends Component {
@@ -18,6 +18,8 @@ class BooksApp extends Component {
       myBooks: [],
       loading: true,
     };
+
+    this.notificationDOMRef = createRef();
   }
 
   componentDidMount() {
@@ -36,16 +38,35 @@ class BooksApp extends Component {
     let newState = {};
     BooksAPI.update(book, newShelf).then((result) => {
       // Caso consiga atualizar
+      let message = `Livro ${book.title} `;
       if (newShelf === 'none') {
         newState = BooksAPIUtils.delBook(book, myBooks);
+        message += 'removido com sucesso!';
       } else if (BooksAPIUtils.checkMyBooksHaveChanged(result, myBooks) === true) {
         newState = BooksAPIUtils.addBook(book, newShelf, myBooks);
+        message += 'adicionado com sucesso!';
       } else {
         newState = BooksAPIUtils.movBookShelf(book, newShelf, myBooks);
+        message += 'movido com sucesso!';
       }
       this.setState({
         ...newState,
       });
+      this.addNotification('Sucesso', message, 'success');
+    });
+  }
+
+  addNotification = (title, message, type) => {
+    this.notificationDOMRef.current.addNotification({
+      title,
+      message,
+      type,
+      insert: "bottom",
+      container: "bottom-left",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: { duration: 5000 },
+      dismissable: { click: true }
     });
   }
 
@@ -55,22 +76,8 @@ class BooksApp extends Component {
     return (
       <Loading status={loading} className="loading center">
         <div className="app">
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <HomePage myBooks={myBooks} updateBook={this.updateBook} />
-            )}
-          />
-          <Route
-            path="/search"
-            render={() => (
-              <SearchPage
-                myBooks={myBooks}
-                updateBook={this.updateBook}
-              />
-            )}
-          />
+          <Routes myBooks={myBooks} updateBook={this.updateBook} />
+          <ReactNotification ref={this.notificationDOMRef} />
         </div>
       </Loading>
     );
