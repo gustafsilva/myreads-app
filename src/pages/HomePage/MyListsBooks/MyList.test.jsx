@@ -71,4 +71,36 @@ describe('[component] MyList', () => {
 
     expect(listBooks).toHaveLength(lengthBooksExpected);
   });
+
+  it('renderung with name list not empty and verify length list empty books', () => {
+    const books = [
+      {
+        title: 'The Linux Command Line',
+        authors: [
+          'William E. Shotts, Jr.',
+        ],
+        imageLinks: {
+          smallThumbnail: 'http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
+          thumbnail: 'http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+        },
+        id: 'nggnmAEACAAJ',
+        shelf: 'read',
+      },
+      {
+        title: 'The Sebastian Thrun Handbook - Everything You Need to Know about Sebastian Thrun',
+        authors: [
+          'Andre Cantrell',
+        ],
+        imageLinks: {
+          smallThumbnail: 'http://books.google.com/books/content?id=NqkKvgAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
+          thumbnail: 'http://books.google.com/books/content?id=NqkKvgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+        },
+        id: 'NqkKvgAACAAJ',
+        shelf: 'wantToRead',
+      },
+    ];
+    const wrapper = mount(<MyList name="Read" {...setup} books={books} />);
+
+    expect(wrapper.find('p')).toBeTruthy();
+  });
 });

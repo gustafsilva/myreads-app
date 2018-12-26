@@ -61,12 +61,12 @@ class BooksApp extends Component {
       title,
       message,
       type,
-      insert: "bottom",
-      container: "bottom-left",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "fadeOut"],
+      insert: 'bottom',
+      container: 'bottom-left',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
       dismiss: { duration: 5000 },
-      dismissable: { click: true }
+      dismissable: { click: true },
     });
   }
 
