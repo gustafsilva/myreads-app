@@ -1,0 +1,34 @@
+---
+name: BookshelvesChange
+menu: components
+---
+import { Playground, PropsTable } from 'docz';
+
+import BookshelvesChange from './index';
+
+# BookshelvesChange
+
+Component responsible for controlling which shelf the book is in.
+By default a book is on the `none` shelf.
+
+Possible shelves:
+- **currentlyReading**
+- **wantToRead**
+- **read**
+- **none** (default)
+
+### Properties
+
+<PropsTable of={BookshelvesChange} />
+
+## Basic Usage
+
+<Playground>
+  <BookshelvesChange update={() => {}} />
+</Playground>
+
+## Current Shelf
+
+<Playground>
+  <BookshelvesChange update={() => {}} currentShelf="read" />
+</Playground>

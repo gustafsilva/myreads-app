@@ -13,13 +13,36 @@ class ListBooks extends PureComponent {
     this.setState({ open: true });
   }
 
-  render() {
+  updateBookShelf = (bookID, newShelf) => {
     const { books, updateBook } = this.props;
+    const book = books.filter(currentBook => currentBook.id === bookID);
+
+    if (book.length > 0) {
+      updateBook(book[0], newShelf);
+    }
+  }
+
+  render() {
+    const { books } = this.props;
     const { open } = this.state;
 
-    const listBook = books.map(book => (
-      <Book key={book.id} data={book} updateBook={updateBook} />
-    ));
+    const listBook = books.map((book) => {
+      const thumbnail = book.imageLinks !== undefined
+        ? book.imageLinks.smallThumbnail
+        : '';
+
+      return (
+        <Book
+          key={book.id}
+          id={book.id}
+          title={book.title}
+          authors={book.authors}
+          thumbnail={thumbnail}
+          shelf={book.shelf}
+          updateBook={this.updateBookShelf}
+        />
+      );
+    });
 
     const showList = open && listBook.length > 0;
     return (
@@ -30,8 +53,21 @@ class ListBooks extends PureComponent {
   }
 }
 
+const IMAGE_LINK_SHAPE = {
+  smallThumbnail: PropTypes.string,
+};
+
+const BOOK_SHAPE = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  imageLinks: PropTypes.shape(IMAGE_LINK_SHAPE),
+  authors: PropTypes.arrayOf(PropTypes.string),
+};
+
 ListBooks.propTypes = {
-  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /** List of books to be rendered. */
+  books: PropTypes.arrayOf(BOOK_SHAPE).isRequired,
+  /** Function responsible for updating book shelf. */
   updateBook: PropTypes.func.isRequired,
 };
 

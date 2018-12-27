@@ -1,0 +1,42 @@
+---
+name: Loading
+menu: components
+---
+import { Playground, PropsTable } from 'docz';
+
+import Loading from './index';
+import 'App/App.css';
+
+# Loading
+
+Component responsible for displaying loading icon or child component.
+
+If **status** is `true`, the load icon is rendered. If `false`, the past **child component** is rendered.
+
+### Properties
+
+<PropsTable of={Loading} />
+
+## Status True
+
+<Playground>
+  <Loading status={true}>
+    <p>Children to be rendered</p>
+  </Loading>
+</Playground>
+
+## Status False
+
+<Playground>
+  <Loading status={false}>
+    <p>Children to be rendered</p>
+  </Loading>
+</Playground>
+
+## Customizing Icon Class
+
+<Playground>
+  <Loading status={true} className="loading center">
+    <p>Children to be rendered</p>
+  </Loading>
+</Playground>

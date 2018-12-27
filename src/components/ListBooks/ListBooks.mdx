@@ -1,0 +1,52 @@
+---
+name: ListBooks
+menu: components
+---
+import { Playground, PropsTable } from 'docz';
+import ListBooks from './index';
+
+# ListBooks
+
+Component responsible for rendering a **list of books**.
+
+### Properties
+
+<PropsTable of={ListBooks} />
+
+## Basic Usage
+
+<Playground>
+  <ListBooks
+    books={[
+      {
+        title: 'The Linux Command Line',
+        authors: [
+          'William E. Shotts, Jr.',
+        ],
+        imageLinks: {
+          smallThumbnail: 'http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
+        },
+        id: 'nggnmAEACAAJ',
+        shelf: 'read',
+      },
+      {
+        title: 'The Sebastian Thrun Handbook - Everything You Need to Know about Sebastian Thrun',
+        authors: [
+          'Andre Cantrell',
+        ],
+        imageLinks: {
+          smallThumbnail: 'http://books.google.com/books/content?id=NqkKvgAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
+        },
+        id: 'NqkKvgAACAAJ',
+        shelf: 'none',
+      }
+    ]}
+    updateBook={() => {}}
+  />
+</Playground>
+
+## List empty
+
+<Playground>
+  <ListBooks books={[]}  updateBook={() => {}} />
+</Playground>

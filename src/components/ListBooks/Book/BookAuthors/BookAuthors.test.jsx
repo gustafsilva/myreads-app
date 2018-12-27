@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import BookAuthors from './BookAuthors';
+import BookAuthors from './index';
 
 describe('[component] BookAuthors', () => {
   it('rendering with list of authors undefined', () => {

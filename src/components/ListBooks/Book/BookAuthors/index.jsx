@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { toProperList } from '@cahil/utils';
 
 const BookAuthors = ({ authors }) => {
@@ -11,6 +12,11 @@ const BookAuthors = ({ authors }) => {
 
 BookAuthors.defaultProps = {
   authors: [],
+};
+
+BookAuthors.propTypes = {
+  /** List of authors to be rendered. */
+  authors: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default BookAuthors;

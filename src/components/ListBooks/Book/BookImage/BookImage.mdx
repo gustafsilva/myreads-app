@@ -1,0 +1,30 @@
+---
+name: BookImage
+menu: components
+---
+import { Playground, PropsTable } from 'docz';
+import BookImage from './index';
+
+# BookImage
+
+Renders the cover image of a book based on the URL.
+If the `thumbnail`property is undefined, a default image for books is used.
+
+### Properties
+
+<PropsTable of={BookImage} />
+
+## Basic Usage
+
+<Playground>
+  <BookImage />
+</Playground>
+
+## Thumbnail
+
+<Playground>
+  <BookImage
+    thumbnail="http://books.google.com/books/content?id=IOejDAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
+  />
+</Playground>
+

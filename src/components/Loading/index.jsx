@@ -13,8 +13,11 @@ Loading.defaultProps = {
 };
 
 Loading.propTypes = {
+  /** Flag that indicates whether load icon should be rendered. */
   status: PropTypes.bool.isRequired,
+  /** Component child to be rendered, when status equals false. */
   children: PropTypes.element.isRequired,
+  /** Icon class. */
   className: PropTypes.string,
 };
 

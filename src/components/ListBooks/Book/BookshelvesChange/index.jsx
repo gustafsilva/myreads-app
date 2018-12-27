@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const BookShelfChanger = ({ update, currentShelf }) => {
+const BookshelvesChange = ({ update, currentShelf }) => {
   const listShelfs = ['currentlyReading', 'wantToRead', 'read', 'none'];
 
   let shelf = currentShelf;
@@ -22,13 +22,15 @@ const BookShelfChanger = ({ update, currentShelf }) => {
   );
 };
 
-BookShelfChanger.defaultProps = {
+BookshelvesChange.defaultProps = {
   currentShelf: 'none',
 };
 
-BookShelfChanger.propTypes = {
+BookshelvesChange.propTypes = {
+  /** Function responsible for updating book shelf. */
   update: PropTypes.func.isRequired,
+  /** ID of the current shelf. */
   currentShelf: PropTypes.string,
 };
 
-export default BookShelfChanger;
+export default BookshelvesChange;

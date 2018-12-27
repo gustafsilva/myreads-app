@@ -1,0 +1,32 @@
+---
+name: BookAuthors
+menu: components
+---
+import { Playground, PropsTable } from 'docz';
+import BookAuthors from './index';
+
+# BookAuthors
+
+Renders list of authors of a book separated by **commas** and the clause **and**.
+
+### Properties
+
+<PropsTable of={BookAuthors} />
+
+## Basic Usage
+
+<Playground>
+  <BookAuthors />
+</Playground>
+
+## List with two Authors 
+
+<Playground>
+  <BookAuthors authors={['Gustavo', 'Guilherme']} />
+</Playground>
+
+## List with many Authors
+
+<Playground>
+  <BookAuthors authors={['Gustavo', 'Guilherme', 'Magda', 'Letícia']} />
+</Playground>

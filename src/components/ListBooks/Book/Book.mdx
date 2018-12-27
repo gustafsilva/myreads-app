@@ -1,0 +1,64 @@
+---
+name: Book
+menu: components
+---
+import { Playground, PropsTable } from 'docz';
+import Book from './index';
+
+# Book
+
+Component responsible for rendering a **book**, with its current shelf, title, cover and its authors.
+
+### Properties
+
+<PropsTable of={Book} />
+
+
+## Basic Usage
+
+<Playground>
+  <Book
+    id="nggnmAEACAAJ"
+    title="The Linux Command Line"
+    updateBook={() => {}}
+  />
+</Playground>
+
+## Authors
+
+<Playground>
+  <Book
+    id="nggnmAEACAAJ"
+    title="The Linux Command Line"
+    authors={['William E. Shotts, Jr.']}
+    updateBook={() => {}}
+  />
+</Playground>
+
+## Thumbail
+
+<Playground>
+  <Book
+    id="nggnmAEACAAJ"
+    title="The Linux Command Line"
+    authors={['William E. Shotts, Jr.']}
+    thumbnail="http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
+    updateBook={() => {}}
+  />
+</Playground>
+
+## Shelf
+
+<Playground>
+  <Book
+    id="nggnmAEACAAJ"
+    title="The Linux Command Line"
+    authors={['William E. Shotts, Jr.']}
+    thumbnail="http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
+    shelf="read"
+    updateBook={() => {}}
+  />
+</Playground>
+
+
+
