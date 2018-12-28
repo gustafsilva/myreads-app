@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 
-import SearchBooksBar from './SearchBooksBar';
+import SearchBooksBar from './index';
 
 describe('[component] SearchBooksBar', () => {
   const setup = { updateQuery: jest.fn() };

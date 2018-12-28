@@ -1,0 +1,65 @@
+---
+name: Bookshelf
+---
+import { Playground, PropsTable } from 'docz';
+
+import Bookshelf from './index';
+import 'App/App.css';
+
+# Bookshelf
+
+Component responsible for rendering a book shelf, such as its name and information whether or not books
+are registered on the shelf.
+
+### Properties
+
+<PropsTable of={Bookshelf} />
+
+## Basic Usage
+
+<Playground>
+  <Bookshelf name="Read" books={[]} updateBook={() => {}} />
+</Playground>
+
+## Books not empty
+
+<Playground>
+  <Bookshelf
+    name="Want to Read"
+    books={[
+      {
+        'title': "The Cuckoo's Calling",
+        'authors': [
+          'Robert Galbraith'
+        ],
+        'imageLinks': {
+          'smallThumbnail': 'http://books.google.com/books/content?id=evuwdDLfAyYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+          'thumbnail': 'http://books.google.com/books/content?id=evuwdDLfAyYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
+        },
+        'id': 'evuwdDLfAyYC',
+        'shelf': 'wantToRead'
+      },
+      {
+        'title': 'React.js Essentials',
+        'authors': [
+          'Artemij Fedosejev'
+        ],
+        'imageLinks': {
+          'smallThumbnail': 'http://books.google.com/books/content?id=Rhl1CgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+          'thumbnail': 'http://books.google.com/books/content?id=Rhl1CgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
+        },
+        'id': 'Rhl1CgAAQBAJ',
+        'shelf': 'wantToRead'
+      },
+      {
+        'title': 'God’s Plan for His Chosen: The Cost and the Conflict',
+        'authors': [
+          'Walt Thrun'
+        ],
+        'id': 'UOZpCwAAQBAJ',
+        'shelf': 'wantToRead'
+      },
+    ]}
+    updateBook={() => {}}
+  />
+</Playground>

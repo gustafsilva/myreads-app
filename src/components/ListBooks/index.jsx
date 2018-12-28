@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import ListAnimated from 'components/animations/ListAnimated';
-import Book from './Book';
+import Book from 'components/Book';
 
 class ListBooks extends PureComponent {
   state = {

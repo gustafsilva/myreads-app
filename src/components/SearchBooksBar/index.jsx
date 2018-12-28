@@ -34,7 +34,9 @@ class SearchBooksBar extends Component {
 }
 
 SearchBooksBar.propTypes = {
+  /** Query used for book search. */
   query: PropTypes.string.isRequired,
+  /** Function responsible for query update. */
   updateQuery: PropTypes.func.isRequired,
 };
 

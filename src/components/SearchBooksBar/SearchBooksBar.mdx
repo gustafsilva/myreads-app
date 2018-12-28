@@ -1,0 +1,28 @@
+---
+name: SearchBooksBar
+---
+import { Playground, PropsTable } from 'docz';
+
+import SearchBooksBar from './index';
+import 'App/App.css';
+import 'styles/reset.css';
+
+# SearchBooksBar
+
+Component responsible for rendering bar for searching for books.
+
+### Properties
+
+<PropsTable of={SearchBooksBar} />
+
+## Basic Usage
+
+<Playground>
+  <SearchBooksBar query="react" updateQuery={() => {}} />
+</Playground>
+
+## Query Empty
+
+<Playground>
+  <SearchBooksBar query="" updateQuery={() => {}} />
+</Playground>

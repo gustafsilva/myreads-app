@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Link } from 'react-router-dom';
 import { MemoryRouter } from 'react-router';
 
-import OpenSearch from './OpenSearch';
+import OpenSearch from './index';
 
 describe('[component] OpenSearch', () => {
   it('check link /search', () => {

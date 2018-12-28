@@ -6,7 +6,7 @@ import * as BooksAPIUtils from 'utils/BooksAPIUtils';
 
 import Loading from 'components/Loading';
 import ListBooks from 'components/ListBooks';
-import SearchBooksBar from './SearchBooksBar';
+import SearchBooksBar from 'components/SearchBooksBar';
 
 
 class SearchPage extends Component {
@@ -79,7 +79,9 @@ class SearchPage extends Component {
 }
 
 SearchPage.propTypes = {
+  /** Function responsible for updating book shelf. */
   updateBook: PropTypes.func.isRequired,
+  /** List of books on the shelf. */
   myBooks: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

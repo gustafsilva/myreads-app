@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ListBooks from 'components/ListBooks';
 
-const MyList = ({ name, books, updateBook }) => {
+const Bookshelf = ({ name, books, updateBook }) => {
   if (name.length > 0) {
     const listBooks = books.length > 0
       ? <ListBooks books={books} updateBook={updateBook} />
@@ -22,10 +22,13 @@ const MyList = ({ name, books, updateBook }) => {
   return false;
 };
 
-MyList.propTypes = {
+Bookshelf.propTypes = {
+  /** Shelf name. */
   name: PropTypes.string.isRequired,
+  /** Current shelf books. */
   books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /** Function responsible for updating book shelf. */
   updateBook: PropTypes.func.isRequired,
 };
 
-export default MyList;
+export default Bookshelf;

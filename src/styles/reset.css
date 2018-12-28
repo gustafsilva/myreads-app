@@ -1,0 +1,15 @@
+.book-shelf-changer {
+  position: relative;
+}
+
+.book .book-shelf-changer {
+  position: absolute;
+}
+
+.search-books-bar {
+  position: relative;
+}
+
+.open-search {
+  position: relative;
+}
