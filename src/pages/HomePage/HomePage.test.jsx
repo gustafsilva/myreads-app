@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Link } from 'react-router-dom';
 import { MemoryRouter } from 'react-router';
 
-import Book from 'components/ListBooks/Book';
+import Book from 'components/Book';
 import HomePage from './index';
 
 describe('[component] HomePage', () => {

@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme';
 import Book from 'components/Book';
 import MyList from './index';
 
-describe('[component] MyList', () => {
+describe('[component] Bookshelf', () => {
   const setup = {
     books: [
       {
@@ -14,7 +14,6 @@ describe('[component] MyList', () => {
         ],
         imageLinks: {
           smallThumbnail: 'http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
-          thumbnail: 'http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
         },
         id: 'nggnmAEACAAJ',
         shelf: 'read',
@@ -26,10 +25,9 @@ describe('[component] MyList', () => {
         ],
         imageLinks: {
           smallThumbnail: 'http://books.google.com/books/content?id=NqkKvgAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
-          thumbnail: 'http://books.google.com/books/content?id=NqkKvgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
         },
         id: 'NqkKvgAACAAJ',
-        shelf: 'wantToRead',
+        shelf: 'read',
       },
       {
         title: 'Travel by Design',
@@ -39,10 +37,9 @@ describe('[component] MyList', () => {
         ],
         imageLinks: {
           smallThumbnail: 'http://books.google.com/books/content?id=f7EtoDfL6yYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
-          thumbnail: 'http://books.google.com/books/content?id=f7EtoDfL6yYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
         },
         id: 'f7EtoDfL6yYC',
-        shelf: 'currentlyReading',
+        shelf: 'read',
       },
     ],
     updateBook: jest.fn(),

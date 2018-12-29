@@ -8,6 +8,7 @@ import OpenSearch from './index';
 describe('[component] OpenSearch', () => {
   it('check link /search', () => {
     const toExpected = '/search';
+
     const wrapper = mount((
       <MemoryRouter>
         <OpenSearch />

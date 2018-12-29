@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import { waitForState } from 'enzyme-async-helpers';
 
-import Book from 'components/ListBooks/Book';
+import Book from 'components/Book';
 import SearchPage from './index';
 
 describe('[component] SearchPage', () => {

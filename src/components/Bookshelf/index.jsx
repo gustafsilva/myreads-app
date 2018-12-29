@@ -22,12 +22,23 @@ const Bookshelf = ({ name, books, updateBook }) => {
   return false;
 };
 
+const IMAGE_LINK_SHAPE = {
+  smallThumbnail: PropTypes.string,
+};
+
+const BOOK_SHAPE = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  imageLinks: PropTypes.shape(IMAGE_LINK_SHAPE),
+  authors: PropTypes.arrayOf(PropTypes.string),
+});
+
 Bookshelf.propTypes = {
   /** Shelf name. */
   name: PropTypes.string.isRequired,
   /** Current shelf books. */
-  books: PropTypes.arrayOf(PropTypes.object).isRequired,
-  /** Function responsible for updating book shelf. */
+  books: PropTypes.arrayOf(BOOK_SHAPE).isRequired,
+  /** Function responsib'le for updating book shelf. */
   updateBook: PropTypes.func.isRequired,
 };
 

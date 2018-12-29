@@ -57,12 +57,12 @@ const IMAGE_LINK_SHAPE = {
   smallThumbnail: PropTypes.string,
 };
 
-const BOOK_SHAPE = {
+const BOOK_SHAPE = PropTypes.shape({
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   imageLinks: PropTypes.shape(IMAGE_LINK_SHAPE),
   authors: PropTypes.arrayOf(PropTypes.string),
-};
+});
 
 ListBooks.propTypes = {
   /** List of books to be rendered. */

@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import Book from 'components/Book';
 import ListBooks from './index';
-import Book from './Book';
 
 describe('[component] ListBooks', () => {
   const setup = {
