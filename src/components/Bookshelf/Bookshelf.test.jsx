@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import Book from 'components/Book';
-import MyList from './index';
+import Bookshelf from './index';
 
 describe('[component] Bookshelf', () => {
   const setup = {
@@ -46,7 +46,7 @@ describe('[component] Bookshelf', () => {
   };
 
   it('rendering with name list empty', () => {
-    const wrapper = shallow(<MyList name="" {...setup} />);
+    const wrapper = shallow(<Bookshelf name="" {...setup} />);
 
     expect(wrapper.isEmptyRender()).toBeTruthy();
   });
@@ -54,7 +54,7 @@ describe('[component] Bookshelf', () => {
   it('rendering with name list not empty', () => {
     const nameExpected = 'Read';
 
-    const wrapper = shallow(<MyList name="Read" {...setup} />);
+    const wrapper = shallow(<Bookshelf name="Read" {...setup} />);
     const name = wrapper.find('h2');
 
     expect(name.text()).toBe(nameExpected);
@@ -63,7 +63,7 @@ describe('[component] Bookshelf', () => {
   it('rendering with name list not empty and verify length books list', () => {
     const lengthBooksExpected = setup.books.length;
 
-    const wrapper = mount(<MyList name="Read" {...setup} />);
+    const wrapper = mount(<Bookshelf name="Read" {...setup} />);
     const listBooks = wrapper.find(Book);
 
     expect(listBooks).toHaveLength(lengthBooksExpected);
@@ -96,8 +96,11 @@ describe('[component] Bookshelf', () => {
         shelf: 'wantToRead',
       },
     ];
-    const wrapper = mount(<MyList name="Read" {...setup} books={books} />);
+    const lengthBooksExpected = books.length;
 
-    expect(wrapper.find('p')).toBeTruthy();
+    const wrapper = mount(<Bookshelf name="Read" {...setup} books={books} />);
+    const listBooks = wrapper.find(Book);
+
+    expect(listBooks).toHaveLength(lengthBooksExpected);
   });
 });

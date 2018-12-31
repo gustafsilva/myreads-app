@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router';
 import Book from 'components/Book';
 import HomePage from './index';
 
-describe('[component] HomePage', () => {
+describe('[page] HomePage', () => {
   const setup = {
     updateBook: jest.fn(),
     myBooks: [
@@ -86,7 +86,7 @@ describe('[component] HomePage', () => {
         <HomePage {...setup} />
       </MemoryRouter>
     ));
-    const books = wrapper.find('li');
+    const books = wrapper.find(Book);
 
     expect(books).toHaveLength(lengthBooksExpected);
   });
@@ -97,8 +97,9 @@ describe('[component] HomePage', () => {
         <HomePage {...setup} />
       </MemoryRouter>
     ));
+    const book = wrapper.find('Book select').first();
     const target = { value: 'currentlyRead' };
-    wrapper.find('Book select').first().simulate('change', { target });
+    book.simulate('change', { target });
 
     expect(setup.updateBook).toHaveBeenCalled();
   });

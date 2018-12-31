@@ -6,7 +6,7 @@ import { waitForState } from 'enzyme-async-helpers';
 import Book from 'components/Book';
 import SearchPage from './index';
 
-describe('[component] SearchPage', () => {
+describe('[page] SearchPage', () => {
   const setup = {
     myBooks: [
       {
@@ -109,13 +109,16 @@ describe('[component] SearchPage', () => {
   });
 
   it('rendering with books list empty', () => {
+    const lengthBooksExpected = 0;
+
     const wrapper = mount((
       <MemoryRouter>
         <SearchPage {...setup} />
       </MemoryRouter>
     ));
+    const listBooks = wrapper.find(Book);
 
-    expect(wrapper.exists('Book')).toBeFalsy();
+    expect(listBooks).toHaveLength(lengthBooksExpected);
   });
 
   it('rendering with books list not empty', () => {
@@ -138,7 +141,7 @@ describe('[component] SearchPage', () => {
 
     const wrapper = mount((
       <MemoryRouter>
-        <SearchPage {...setup} />
+        <SearchPage {...setup} book={BOOKS} />
       </MemoryRouter>
     ));
     const searchPageComponent = wrapper.find(SearchPage).instance();
@@ -173,7 +176,6 @@ describe('[component] SearchPage', () => {
 
   it('check update query', async () => {
     const lengthMinBooksExpected = 0;
-    const ID_INPUT_SEARCH_BOOKS_BAR = '#searchBooksBar';
     const newQuery = 'react';
 
     const wrapper = mount((
@@ -183,7 +185,7 @@ describe('[component] SearchPage', () => {
     ));
     const searchPageComponent = wrapper.find(SearchPage);
 
-    const search = searchPageComponent.find(`input${ID_INPUT_SEARCH_BOOKS_BAR}`);
+    const search = searchPageComponent.find('input');
     const target = { value: newQuery };
     search.simulate('change', { target });
 

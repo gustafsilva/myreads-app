@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import SearchBooksBar from './index';
 
@@ -47,5 +48,18 @@ describe('[component] SearchBooksBar', () => {
     clearButton.simulate('click');
 
     expect(setup.updateQuery).toHaveBeenCalled();
+  });
+
+  it('chech router for homepage', () => {
+    const toExpected = '/';
+
+    const wrapper = mount((
+      <MemoryRouter>
+        <SearchBooksBar {...setup} query="react" />
+      </MemoryRouter>
+    ));
+    const { to } = wrapper.find(Link).props();
+
+    expect(to).toBe(toExpected);
   });
 });

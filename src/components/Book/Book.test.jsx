@@ -8,9 +8,8 @@ import BookshelvesChange from './BookshelvesChange';
 
 describe('[component] Book', () => {
   const setup = {
-    id: 'asjias12',
-    title: 'React',
-    authors: ['Gustavo Silva', 'Guilherme Freitas'],
+    id: 'ycTADgAAQBAJ',
+    title: 'Learning React',
     updateBook: jest.fn(),
   };
 
@@ -24,12 +23,16 @@ describe('[component] Book', () => {
   });
 
   it('checking book authors', () => {
-    const authorsExpected = 'Gustavo Silva and Guilherme Freitas';
+    const authors = [
+      'Alex Banks',
+      'Eve Porcello',
+    ];
+    const authorsExpected = 'Alex Banks and Eve Porcello';
 
-    const wrapper = mount(<Book {...setup} />);
-    const authors = wrapper.find(BookAuthors);
+    const wrapper = mount(<Book authors={authors} {...setup} />);
+    const bookAuthors = wrapper.find(BookAuthors);
 
-    expect(authors.text()).toBe(authorsExpected);
+    expect(bookAuthors.text()).toBe(authorsExpected);
   });
 
   it('checking thumbnail undefined', () => {
@@ -74,5 +77,16 @@ describe('[component] Book', () => {
     const { currentShelf } = bookshelves.props();
 
     expect(currentShelf).toBe(shelfExpected);
+  });
+
+  it('change book shelf', () => {
+    const wrapper = mount(<Book {...setup} />);
+    const bookshelvesChange = wrapper.find(BookshelvesChange);
+
+    const shelf = bookshelvesChange.find('select');
+    const target = { value: 'read' };
+    shelf.simulate('change', { target });
+
+    expect(setup.updateBook).toHaveBeenCalled();
   });
 });
