@@ -29,23 +29,26 @@ class BooksApp extends Component {
         myBooks: books,
         loading: false,
       });
-    }).catch(err => console.error(err));
+    });
   }
 
+  /** Atualiza a prateleira de um livro. */
   updateBook = (book, newShelf) => {
-    // Atualizando shelf de um livro
     const { myBooks } = this.state;
     let newState = {};
     BooksAPI.update(book, newShelf).then((result) => {
-      // Caso consiga atualizar
+      // Quando termina de atualizar na API.
       let message = `Livro ${book.title} `;
       if (newShelf === 'none') {
+        // Caso tenha sido removida da prateleira.
         newState = BooksAPIUtils.delBook(book, myBooks);
         message += 'removido com sucesso!';
       } else if (BooksAPIUtils.checkMyBooksHaveChanged(result, myBooks) === true) {
+        // Caso tenha sido adicionada na prateleira.
         newState = BooksAPIUtils.addBook(book, newShelf, myBooks);
         message += 'adicionado com sucesso!';
       } else {
+        // Caso tenha sido movida de prateleira.
         newState = BooksAPIUtils.movBookShelf(book, newShelf, myBooks);
         message += 'movido com sucesso!';
       }
@@ -56,6 +59,7 @@ class BooksApp extends Component {
     });
   }
 
+  /** Responsável por criar notificação na tela para interação com usuário. */
   addNotification = (title, message, type) => {
     this.notificationDOMRef.current.addNotification({
       title,

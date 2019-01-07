@@ -8,7 +8,6 @@ import Loading from 'components/Loading';
 import ListBooks from 'components/ListBooks';
 import SearchBooksBar from 'components/SearchBooksBar';
 
-
 class SearchPage extends Component {
   state = {
     query: '',
@@ -16,6 +15,7 @@ class SearchPage extends Component {
     loading: false,
   }
 
+  /** Atualiza a query e consulta os livros na API. */
   updateQuery = (newQuery) => {
     this.setState({
       query: newQuery,
@@ -23,11 +23,16 @@ class SearchPage extends Component {
     });
 
     if (newQuery !== '') {
+      /* Se a query a ser persquisada não for vázia.
+        Realiza uma requisição utilizando a query para API.
+      */
       BooksAPI.search(newQuery).then((response) => {
+        /* Quando a requisição tiver sido concluída. */
         const { query } = this.state;
         const { myBooks } = this.props;
 
         if (query === newQuery) {
+          /* Caso a query atual seja a mesma que foi feita na hora requisição. */
           const { error } = response;
           const newState = error
             ? { books: [] }
@@ -37,8 +42,9 @@ class SearchPage extends Component {
             loading: false,
           });
         }
-      }).catch((err => console.error('deu ruim', err)));
+      });
     } else {
+      /* Se a query a ser persquisada for vázia. */
       this.setState({
         books: [],
         loading: false,
@@ -46,11 +52,15 @@ class SearchPage extends Component {
     }
   }
 
+
+  /** Atualiza a prateleira de um livro. */
   updateBookSearch = (book, newShelf) => {
     const { updateBook } = this.props;
     const { books } = this.state;
+    // Utilizando o método passado nas props, atualiza a prateleira do livro.
     updateBook(book, newShelf);
 
+    // Atualiza as prateleiras do livros pesquisados na consulta.
     const newBooks = BooksAPIUtils.setShelfBook(book, books, newShelf);
     this.setState({
       books: newBooks,

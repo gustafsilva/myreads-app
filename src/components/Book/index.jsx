@@ -8,12 +8,14 @@ import BookshelvesChange from './BookshelvesChange';
 
 
 class Book extends PureComponent {
+  /** Atualiza a prateleira do livro. */
   update = (newShelf) => {
     const {
       id,
       updateBook,
     } = this.props;
 
+    // Utilizando o método passado nas props, atualiza a prateleira do livro.
     updateBook(id, newShelf);
   }
 
