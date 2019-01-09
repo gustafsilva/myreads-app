@@ -17,6 +17,8 @@ $ npm install
 
 ## Custom Scripts :fire:
 ```shell
+$ npm start # run the project
+$ npm test # run the tests
 $ npm run lint # do linter check
 $ npm run docz:dev # run documentation server
 $ npm run docz:build # create documents for documentation
