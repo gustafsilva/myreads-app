@@ -1,4 +1,6 @@
 # MyReads Project
+[![Build Status](https://travis-ci.org/gustafsilva/myreads-app.svg?branch=master)](https://travis-ci.org/gustafsilva/myreads-app)
+[![Coverage Status](https://coveralls.io/repos/github/gustafsilva/myreads-app/badge.svg?branch=master)](https://coveralls.io/github/gustafsilva/myreads-app?branch=master)
 
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
 
