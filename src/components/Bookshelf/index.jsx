@@ -7,7 +7,7 @@ const Bookshelf = ({ name, books, updateBook }) => {
   if (name.length > 0) {
     const listBooks = books.length > 0
       ? <ListBooks books={books} updateBook={updateBook} />
-      : <p>Nenhum livro na lista</p>;
+      : <p>No book in the list.</p>;
 
     return (
       <div className="bookshelf-books">

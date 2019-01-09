@@ -38,24 +38,24 @@ class BooksApp extends Component {
     let newState = {};
     BooksAPI.update(book, newShelf).then((result) => {
       // Quando termina de atualizar na API.
-      let message = `Livro ${book.title} `;
+      let message = `Book ${book.title} `;
       if (newShelf === 'none') {
         // Caso tenha sido removida da prateleira.
         newState = BooksAPIUtils.delBook(book, myBooks);
-        message += 'removido com sucesso!';
+        message += 'successfully removed!';
       } else if (BooksAPIUtils.checkMyBooksHaveChanged(result, myBooks) === true) {
         // Caso tenha sido adicionada na prateleira.
         newState = BooksAPIUtils.addBook(book, newShelf, myBooks);
-        message += 'adicionado com sucesso!';
+        message += 'successfully added!';
       } else {
         // Caso tenha sido movida de prateleira.
         newState = BooksAPIUtils.movBookShelf(book, newShelf, myBooks);
-        message += 'movido com sucesso!';
+        message += 'successfully moved!';
       }
       this.setState({
         ...newState,
       });
-      this.addNotification('Sucesso', message, 'success');
+      this.addNotification('Success', message, 'success');
     });
   }
 

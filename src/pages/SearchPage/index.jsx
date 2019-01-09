@@ -72,7 +72,7 @@ class SearchPage extends Component {
 
     let listBooks = <ListBooks books={books} updateBook={this.updateBookSearch} />;
     if (books.length === 0 && query !== '') {
-      listBooks = <p>Nenhum livro encontrado.</p>;
+      listBooks = <p>No books found.</p>;
     }
 
     return (
