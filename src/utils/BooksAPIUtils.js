@@ -25,10 +25,10 @@ export const setShelfBook = (book, books, newShelf) => {
   const newBooks = books.map((myBook) => {
     // Percorre por toda lista dos MyBooks já cadastrados para mudar shelf do livro atualizado
     if (myBook.id === book.id) {
-      const newMyBook = myBook;
-      newMyBook.shelf = newShelf;
-
-      return newMyBook;
+      return {
+        ...myBook,
+        shelf: newShelf,
+      };
     }
     return myBook;
   });
